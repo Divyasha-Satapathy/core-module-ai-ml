@@ -71,23 +71,31 @@ Steps:
 
 Run Step 1 to install dependencies (ultralytics, opencv-python-headless,
 kaggle, requests, pandas).
+
 Run Step 1b to mount Google Drive — this is where training checkpoints are saved
 (/content/drive/MyDrive/platecalc_runs), so a disconnect never loses more than one
 epoch of progress.
+
 Run Step 2 and upload your kaggle.json when prompted to download FoodSeg103.
+
 Run Steps 3–6 to inspect the dataset structure, load category names, convert masks
 to YOLO-format labels, and generate data.yaml. Adjust the hardcoded paths in these
 cells if your Kaggle download unpacks with a different folder layout.
+
 Run Step 7 to train YOLOv8-Seg (default: 10 epochs — increase once you've confirmed
 the pipeline works end-to-end and want a stronger model).
+
 Run Step 8 to load the best checkpoint (best.pt). In future sessions, once a
 trained model exists on Drive, you can skip straight to Steps 1, 1b, and this step —
 no need to re-download data or retrain.
+
 Run Steps 9–11 to define the inference, mask-analysis, and weight-estimation
 functions, and paste in your USDA API key.
+
 Run Step 12, upload a plate/meal photo when prompted, and it will output a table of
 detected items with estimated weight, calories/100g, and calories per item, plus a total
 meal calorie estimate.
+
 Step 13 (optional) visualizes the model's detections/masks overlaid on the image.
 
 
