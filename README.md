@@ -99,22 +99,32 @@ No real-world scale by default. A single 2D photo has no inherent depth or scale
 information, so weight estimates default to heuristics (average unit weight for countable
 items; frame-area proportion for area-based items) calibrated for a "typical" phone photo
 taken at a normal distance. These are approximations, not measurements.
+
 Reference-object scaling is manual, not automatic. The notebook supports a
 mm_per_pixel scale factor for more accurate area-to-weight conversion, but this value
 must currently be measured and entered manually (e.g. by measuring a coin's pixel width in
 an image editor). Automatically detecting a reference object would require an additional
 trained detector, which is not implemented here.
+
 Food density is generalized. When using the reference-object scaling path, a single
 default thickness/density assumption (~0.5 cm thickness, ~1 g/cm³, i.e. water-like
 density) is applied to all area-based foods, rather than food-specific densities.
+
 Portion-weight lookup tables are limited. COUNTABLE_AVG_WEIGHT_G and
 AREA_FOOD_REFERENCE_G only cover a small set of common foods; anything outside these
 tables falls back to a generic default (DEFAULT_AREA_REFERENCE_G = 300), which reduces
 accuracy for less common items. These tables are meant to be extended.
+
 Calorie lookup accuracy depends on USDA name matching. The USDA search matches on the
 raw detected class name; ambiguous or generic names (e.g. "curry") may return a
 less-representative match than a more specific one would.
+
 Model performance depends on training duration. The default of 10 epochs on the nano
 model prioritizes fast iteration over accuracy — segmentation quality (and therefore
 downstream weight/calorie accuracy) will improve with more epochs and/or a larger YOLOv8-Seg
 variant (s/m), at the cost of longer training time.
+
+
+
+
+
